@@ -4,10 +4,13 @@ from tempfile import mkdtemp
 
 app = Flask(__name__)
 
-app.config["SESSION_FILE_DIR"] = mkdtemp()  # store temporary session info
-app.config["SESSION_PERMANENT"] = False     # you can set expiry time in a different way
-app.config["SESSION_TYPE"] = "filesystem"   # how to store the session
-Session(app)
+#app.config["SESSION_FILE_DIR"] = mkdtemp()  # store temporary session info
+#app.config["SESSION_PERMANENT"] = False     # you can set expiry time in a different way
+#app.config["SESSION_TYPE"] = "filesystem"   # how to store the session
+
+
+# Session(app)
+app.secret_key = b'\xda\x98c\xc1J\x05\x9d\xc3\xdc\xcb\xce0g\x1d\xd9-'
 
 OTHER = {"X" : "O", "O" : "X" }
 
