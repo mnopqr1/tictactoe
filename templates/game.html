@@ -38,7 +38,12 @@
                 </tr>
             {% endfor %}
         </table>
-        {{ status }}<br>
+        {% if active %}
+        It is {{ turn }}'s turn.
+        {% else %}
+        Game over! Player {{ turn }} has won.
+        {% endif %}
+        <br><br>
         <a href="{{ url_for('reset')}}">Start over.</a>
     </body>
 </html>

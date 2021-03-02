@@ -15,17 +15,14 @@ app.secret_key = b'\xda\x98c\xc1J\x05\x9d\xc3\xdc\xcb\xce0g\x1d\xd9-'
 OTHER = {"X" : "O", "O" : "X" }
 
 @app.route("/")
-def index():
-    if "board" not in session or session["reset"]:
+def index(reset=False):
+    if "board" not in session or reset:
         session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
         session["turn"] = "X"
-        session["status"] = "It's X's turn."
         session["active"] = True
-        session["reset"] = False
     return render_template("game.html", 
         game=session["board"],
-        turn=session["turn"], 
-        status=session["status"],
+        turn=session["turn"],
         active=session["active"])
 
 def has_won(player):
@@ -55,5 +52,4 @@ def play(row, col):
 
 @app.route("/reset")
 def reset():
-    session["reset"] = True
-    return redirect(url_for("index"))
+    return redirect(url_for("index"), reset=True)
