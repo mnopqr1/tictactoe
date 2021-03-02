@@ -12,7 +12,7 @@
                 height: 150px;
                 font-size: 30px;
                 text-align:center;
-
+                
             }
             .clickable {
                 background-color:blanchedalmond;
@@ -35,7 +35,7 @@
     <body>
         <h1>Tic Tac Toe</h1>
             {% for i in range(3) %}
-                <div class="row">
+                <div class="row mx-auto">
                     {% for j in range(3) %}
                     <div class="col-md-4 boardcell
                     {{'clickable' if active and not game[i][j] }}
@@ -43,7 +43,7 @@
                     {{'playero' if game[i][j] == 'O'}}">
                         
                         {% if game[i][j] %}
-                          {{ game[i][j] }}
+                          <div class="mx-auto">{{ game[i][j] }}</div>
                         {% else %}
                         {% if active %}
                         <a href="{{ url_for('play', row=i, col=j) }}" style="width:100%;height:100%;display:block"></a>
@@ -56,7 +56,7 @@
                 </div>
             {% endfor %}
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 p-1">
         {% if active %}
         Move {{ n + 1 }}. It is {{ turn }}'s turn.
         {% else %}
@@ -67,6 +67,8 @@
         {% endif %}
         {% endif %}
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-3">
                 <a href="{{ url_for('reset')}}">Start over.</a>
             </div>

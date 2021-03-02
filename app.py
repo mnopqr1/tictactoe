@@ -65,4 +65,4 @@ def play(row, col):
 @app.route("/reset")
 def reset():
     restart_game()
-    return redirect(url_for("index", reset=True))
+    return redirect(url_for("index"))
