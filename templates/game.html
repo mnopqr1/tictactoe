@@ -33,7 +33,13 @@
     </head>
     <div class="container-fluid">
     <body>
-        <h1>Tic Tac Toe</h1>
+        <div class="row mx-auto">
+
+            <div class="col-md-4">
+            <h1 class="p-3">Tic Tac Toe</h1>
+            </div>
+        </div>
+        
             {% for i in range(3) %}
                 <div class="row mx-auto">
                     {% for j in range(3) %}
@@ -55,8 +61,8 @@
                     {% endfor %}
                 </div>
             {% endfor %}
-        <div class="row">
-            <div class="col-md-3 p-1">
+        <div class="row mx-auto p-2">
+            <div class="col-md-3">
         {% if active %}
         Move {{ n + 1 }}. It is {{ turn }}'s turn.
         {% else %}
@@ -67,8 +73,6 @@
         {% endif %}
         {% endif %}
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-3">
                 <a href="{{ url_for('reset')}}">Start over.</a>
             </div>
